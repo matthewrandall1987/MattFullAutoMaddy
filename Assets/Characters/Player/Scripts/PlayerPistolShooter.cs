@@ -20,12 +20,15 @@ public class PlayerPistolShooter : MonoBehaviour {
 	private float weaponRange = 10000f;
 
     private Transform Munition;
+	private float OriginalRotation;
+	private int rotationCount = 0;
 
     // Use this for initialization
     void Start () {
 		laserLine = GetComponent<LineRenderer> ();
         Munition = transform.FindChild("Munition");
         rateOfFireDuration = new WaitForSeconds(rateOfFire);
+		OriginalRotation = transform.rotation.z;
     }
     
     // Update is called once per frame
@@ -33,8 +36,9 @@ public class PlayerPistolShooter : MonoBehaviour {
     {
         if (Time.time <= nextShotTime)
         {
-            RotateMunition();
-        }
+			RotateMunition();
+		}
+		RotateRecoil ();
     }
 
 	public void Fire()
@@ -58,7 +62,7 @@ public class PlayerPistolShooter : MonoBehaviour {
 
     void ApplyDamage(RaycastHit hit)
     {
-        var shootable = hit.collider.GetComponent<Shootable>();
+		var shootable = hit.collider.GetComponent(typeof(Shootable)) as Shootable;
 
         if (shootable != null)
         {
@@ -72,13 +76,23 @@ public class PlayerPistolShooter : MonoBehaviour {
         laserLine.SetPosition(0, gunEnd.position);
         laserLine.SetPosition(1, hitPoint);
         StartCoroutine(ShotEffect());
-        RotateMunition();
     }
 
     void RotateMunition()
     {
         Munition.Rotate(rateOfTurn, 0, 0);
     }
+
+	void RotateRecoil()
+	{
+		if (Time.time <= nextShotTime - (rateOfFire / 2)) {
+			transform.Rotate (0, 0, -(rateOfTurn * 2));
+			rotationCount++;
+		} else if (rotationCount > 0) {
+			transform.Rotate (0, 0, (rateOfTurn * 2)); 
+			rotationCount--;
+		}
+	}
 
     IEnumerator ShotEffect()
 	{       

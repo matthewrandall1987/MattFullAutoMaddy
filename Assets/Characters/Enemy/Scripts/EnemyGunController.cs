@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGunController : MonoBehaviour {
-    private GameObject _gun;
-    private EnemyPistolShooter _shooter;
+    
+	private EnemyShooter _shooter;
 
     public GameObject Head;
     public GameObject Body;
+	public GameObject Gun;
     public float RotateSpeed = 0.1f;
     public float headOffset = 1;
 
+	private EnemyEventBus eventBus;
     private GameObject _target;
 
     // Use this for initialization
     void Start()
     {
-        _gun = transform.GetChild(0).gameObject;
-        _shooter = _gun.GetComponent<EnemyPistolShooter>();
+		_shooter = Gun.GetComponent<EnemyShooter>();
         _target = GameObject.FindGameObjectWithTag("Player");
+		eventBus = GetComponent<EnemyEventBus> ();
+		eventBus.HasDied += new EnemyEventBus.Handler (Died);
     }
             
     void Update()
@@ -36,4 +39,8 @@ public class EnemyGunController : MonoBehaviour {
         _shooter.Fire();
     }
 
+	void Died()
+	{
+		this.enabled = false;
+	}
 }

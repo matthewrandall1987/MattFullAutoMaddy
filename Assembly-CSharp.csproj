@@ -46,7 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Characters\Enemy\Scripts\EnemyEventBus.cs" />
      <Compile Include="Assets\Characters\Enemy\Scripts\EnemyGunController.cs" />
+     <Compile Include="Assets\Characters\Enemy\Scripts\EnemyHitPoints.cs" />
      <Compile Include="Assets\Characters\Enemy\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Characters\Enemy\Scripts\EnemyPistolShooter.cs" />
      <Compile Include="Assets\Characters\Enemy\Scripts\EnemySpecificEvents.cs" />
@@ -55,6 +57,7 @@
      <Compile Include="Assets\Characters\Player\Scripts\PlayerCursor.cs" />
      <Compile Include="Assets\Characters\Player\Scripts\PlayerGunController.cs" />
      <Compile Include="Assets\Characters\Player\Scripts\PlayerPistolShooter.cs" />
+     <Compile Include="Assets\Characters\Scripts\EnemyShooter.cs" />
      <Compile Include="Assets\Characters\Scripts\Shootable.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

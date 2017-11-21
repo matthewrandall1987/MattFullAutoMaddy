@@ -6,12 +6,15 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour {
     private GameObject _target;
     private NavMeshAgent _agent;
+	private EnemyEventBus eventBus;
 
     // Use this for initialization
     void Start () {
 
         _agent = GetComponent<NavMeshAgent>();
         _target = GameObject.FindGameObjectWithTag("Player");
+		eventBus = GetComponent<EnemyEventBus> ();
+		eventBus.HasDied += new EnemyEventBus.Handler (Died);
     }
 	
 	// Update is called once per frame
@@ -20,4 +23,8 @@ public class EnemyMovement : MonoBehaviour {
     }
 
 
+	void Died()
+	{
+		this.enabled = false;
+	}
 }
