@@ -11,7 +11,7 @@ public class EnemyPistolShooter : EnemyShooter
         laserLine = GetComponent<LineRenderer>();
         rateOfFireDuration = new WaitForSeconds(rateOfFire);
 
-		Munition = transform.FindChild("Munition");
+		Munition = transform.Find("Munition");
     }
 
     // Update is called once per frame

@@ -26,7 +26,7 @@ public class PlayerPistolShooter : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		laserLine = GetComponent<LineRenderer> ();
-        Munition = transform.FindChild("Munition");
+        Munition = transform.Find("Munition");
         rateOfFireDuration = new WaitForSeconds(rateOfFire);
 		OriginalRotation = transform.rotation.z;
     }

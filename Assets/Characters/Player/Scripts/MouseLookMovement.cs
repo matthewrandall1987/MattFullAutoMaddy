@@ -19,7 +19,7 @@ public class MouseLookMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		headTransform = transform.FindChild ("Head");
+		headTransform = transform.Find ("Head");
 		headStartingRotation = headTransform.localRotation;
 		bodyStartingRotation = transform.localRotation;
 	}
