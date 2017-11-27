@@ -29,8 +29,8 @@ public class MouseLookMovement : MonoBehaviour {
 		rotationX += Input.GetAxis ("Mouse X") * sensitivityX;
 		rotationY += Input.GetAxis ("Mouse Y") * sensitivityY;
 
-		rotationX = ClampAngle (rotationX);
-		rotationY = ClampAngle (rotationY, mininumY, maximumY);
+		rotationX = ClampXAngle(rotationX);
+		rotationY = ClampYAngle(rotationY, mininumY, maximumY);
 
 		Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
 		Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
@@ -39,7 +39,18 @@ public class MouseLookMovement : MonoBehaviour {
 		transform.localRotation = bodyStartingRotation * xQuaternion;
 	}
 
-	private static float ClampAngle (float angle, float min = -360f, float max = 360f)
+    private static float ClampXAngle(float angle)
+    {
+        if (angle == -360F)
+            angle += 360F;
+
+        if (angle == 360F)
+            angle -= 360F;
+
+        return angle;
+    }
+
+    private static float ClampYAngle (float angle, float min, float max)
 	{
 		if (angle == -360F)
 			angle += 360F;
