@@ -237,9 +237,17 @@
     <Compile Include="Assets\Characters\Player\Scripts\PlayerGunController.cs" />
     <Compile Include="Assets\Characters\Player\Scripts\PlayerPistolShooter.cs" />
     <Compile Include="Assets\Characters\Scripts\EnemyShooter.cs" />
-    <Compile Include="Assets\Characters\Scripts\Shootable.cs" />
+    <Compile Include="Assets\PlayerInteract.cs" />
     <Compile Include="Assets\Scenes\Shared\Interactables\BarrelPack\BarrelExplode.cs" />
+    <Compile Include="Assets\Scenes\Shared\Interactables\DoorPack\InteractableHingedDoor.cs" />
     <Compile Include="Assets\Scenes\Shared\Interactables\GlassPack\WindowShootable.cs" />
+    <Compile Include="Assets\Scenes\Shared\Interactables\Interactable.cs" />
+    <Compile Include="Assets\Scenes\Shared\Interactables\InteractableShootable.cs" />
+    <Compile Include="Assets\Scenes\Shared\Interactables\RopePack\RopeShootable.cs" />
+    <Compile Include="Assets\Scenes\Shared\Interactables\Shootable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Scenes\Shared\Interactables\DoorPack\Shader\BloodyDoor.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
