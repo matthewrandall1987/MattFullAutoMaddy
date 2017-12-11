@@ -21,7 +21,6 @@ public class EnemyGunController : MonoBehaviour {
 		_shooter = Gun.GetComponent<EnemyShooter>();
         _target = GameObject.FindGameObjectWithTag("Player");
 		eventBus = GetComponent<EnemyEventBus> ();
-		eventBus.HasDied += new EnemyEventBus.Handler (Died);
     }
             
     void Update()
@@ -38,9 +37,5 @@ public class EnemyGunController : MonoBehaviour {
 
         _shooter.Fire();
     }
-
-	void Died()
-	{
-		this.enabled = false;
-	}
+    
 }

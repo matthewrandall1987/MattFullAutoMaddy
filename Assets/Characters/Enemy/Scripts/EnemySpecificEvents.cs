@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EnemySpecificEvents : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public delegate void Handler();
+    public event Handler HasDied;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +16,10 @@ public class EnemySpecificEvents : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void InvokeHasDied()
+    {
+        if (HasDied != null)
+            HasDied.Invoke();
+    }
 }
